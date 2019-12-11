@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: tempo-tms
+  profiles:
+    active: prod
+
+
+logging:
+  path: ../logs
+  file: ${logging.path}/${spring.application.name}.log
+  level:
+    org.springframework: info
+    com.siemens.internal: info
+    root: warn
+
+
+jira:
+  tempoUrl: https://intranet.collaboration.energy.siemens.com/jiradigicon/rest/tempo-timesheets/4/worklogs/search
+  projectUrl: https://intranet.collaboration.energy.siemens.com/jiradigicon/rest/api/2/project/
+  issueUrl: https://intranet.collaboration.energy.siemens.com/jiradigicon/rest/api/2/issue/
