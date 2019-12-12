@@ -2,7 +2,7 @@ spring:
   application:
     name: tempo-tms
   profiles:
-    active: prod
+    active: dev
 
 
 logging:
@@ -18,3 +18,4 @@ jira:
   tempoUrl: https://intranet.collaboration.energy.siemens.com/jiradigicon/rest/tempo-timesheets/4/worklogs/search
   projectUrl: https://intranet.collaboration.energy.siemens.com/jiradigicon/rest/api/2/project/
   issueUrl: https://intranet.collaboration.energy.siemens.com/jiradigicon/rest/api/2/issue/
+  teamUrl: https://intranet.collaboration.energy.siemens.com/jiradigicon/rest/tempo-teams/2/team/team_id/member

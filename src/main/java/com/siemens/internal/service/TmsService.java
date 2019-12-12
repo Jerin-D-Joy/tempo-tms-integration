@@ -132,7 +132,7 @@ public class TmsService {
         tmsInput.setComments("");
         tmsInput.setTmsProjectName(issueDetails.getProjectName());
         tmsInput.setTmsActivityName("CODE-DEVELOP");
-        tmsInput.setPurchaseId("CUT01");
+        tmsInput.setPurchaseOrderId("CUT01");
         return tmsInput;
     }
 
@@ -148,5 +148,10 @@ public class TmsService {
             date = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[0];
         }
         return date;
+    }
+
+    public List<String> getTeamDetails(String token) {
+        tempoService.getTeamMembersFromTempo(token, 4);
+        return  null;
     }
 }

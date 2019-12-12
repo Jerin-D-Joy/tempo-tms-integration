@@ -54,5 +54,5 @@ public class TmsData {
     private String tmsActivityName;
 
     @Column(name = "PO_ID")
-    private String purchaseId;
+    private String purchaseOrderId;
 }

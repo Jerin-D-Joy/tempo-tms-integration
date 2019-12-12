@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class TempoService {
@@ -81,6 +82,25 @@ public class TempoService {
             projectDetails.setProjectName(issueData.get("fields").get("project").get("name").asText());
         }
         return projectDetails;
+    }
+
+    public List<String> getTeamMembersFromTempo(String token, int teamId) {
+        String url = jiraConfig.getTeamUrl().replaceAll("team_id", String.valueOf(teamId));
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", token);
+        HttpEntity<String> entity = new HttpEntity<String>(null,headers);
+        ResponseEntity<String> response = restClient.getRestTemplate().exchange(
+                url, HttpMethod.GET,
+                entity, String.class);
+        if(response.getStatusCode() == HttpStatus.OK) {
+            String result = response.getBody();
+            JsonNode teamData = restClient.parseJsonAsJsonNode(result);
+            List<String> members = teamData.findValuesAsText("member.name");
+            System.out.println(members.get(2));
+            //teamData.get("fields").get("summary").asText());
+            //teamData.get("fields").get("project").get("name").asText();
+        }
+        return null;
     }
 
 }

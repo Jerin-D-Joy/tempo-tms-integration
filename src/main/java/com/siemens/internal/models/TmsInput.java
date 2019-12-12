@@ -19,6 +19,6 @@ public class TmsInput {
     private String comments;
     private String tmsProjectName;
     private String tmsActivityName;
-    private String purchaseId;
+    private String purchaseOrderId;
 
 }
