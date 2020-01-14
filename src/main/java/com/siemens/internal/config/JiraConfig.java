@@ -23,9 +23,10 @@ public class JiraConfig {
     @Getter
     @Setter
     public static class ProjectDetails {
-        private String issueName;
         private String projectName;
-
+        private String tmsActivityName;
+        private String billableType;
+        private String purchaseOrderId;
     }
 
 }

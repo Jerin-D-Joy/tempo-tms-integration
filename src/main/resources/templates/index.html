@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Tempo-Tms Sync</title>
+</head>
+<body>
+<table>
+    <form method="POST" action="/sync">
+        <tr>
+            <td> Username: </td> <td> <input type="text" name="username" required> </td>
+        </tr>
+        <tr>
+            <td> Password: </td> <td> <input type="password" name="password" required> </td>
+        </tr>
+        <tr>
+            <td> Start Date: </td> <td> <input type="date" name="from" required> </td>
+        </tr>
+        <tr>
+            <td> End Date: </td> <td> <input type="date" name="to" required> </td>
+        </tr>
+        <tr>
+            <td> Workers (Comma seperated List of ZIDs) : </td>
+            <td>
+                <textarea rows = "5" cols = "60" name = "workers" required></textarea>
+            </td>
+        </tr>
+        <!--
+        <tr>
+           <td> Projects: </td>
+        </tr>
+        <tr>
+           <td> <input type="checkbox" name="Aramco" value="Aramco"> Saudi - Aramco  </td>
+        </tr>
+        <tr>
+           <td> <input type="checkbox" name="Expo" value="Expo"> Dubai - Expo  </td>
+        </tr>
+        <tr>
+           <td> <input type="checkbox" name="Leave" value="Leave" checked> Internal - Leave  </td>
+        </tr>
+        -->
+        <tr>
+            <td> <input type="submit" value = "Save To TMS Database"/> </td>
+    </form>
+    <form action="/view">
+            <td> <input type="submit" value="View From Database" /> </td>
+        </tr>
+    </form>
+</table>
+</body>
+</html>

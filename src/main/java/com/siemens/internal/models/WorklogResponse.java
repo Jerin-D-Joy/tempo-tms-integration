@@ -1,7 +1,10 @@
 package com.siemens.internal.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -14,10 +17,16 @@ public class WorklogResponse {
     int tempoWorklogId;
     int billableSeconds;
     int originId;
-    String started;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
+    Date started;
     String originTaskId;
-    String dateUpdated;
-    String dateCreated;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
+    Date dateUpdated;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
+    Date dateCreated;
     String worker;
     String updater;
 

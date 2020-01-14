@@ -1,43 +1,36 @@
 package com.siemens.internal.controllers;
 
-import com.siemens.internal.models.TempoRequest;
-import com.siemens.internal.models.TmsInput;
-import com.siemens.internal.models.WorklogDetails;
-import com.siemens.internal.service.ExcelService;
-import com.siemens.internal.service.TmsService;
-import lombok.extern.slf4j.Slf4j;
+import com.siemens.internal.service.RequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
-@RestController
+@Controller
 public class TempoController {
 
     @Autowired
-    private TmsService tmsService;
+    private RequestHandler requestHandler;
 
-    @Autowired
-    private ExcelService excelService;
 
+/*
     @PostMapping(value = "/tempo")
+    @ResponseBody
     public List<WorklogDetails> getTempoTimesheet(@RequestHeader (name = "Authorization") String token,
                                                   @RequestBody TempoRequest tempoRequest) {
         List<WorklogDetails> result = tmsService.getTempoFormat(token, tempoRequest);
         return result;
     }
+*/
 
-    @GetMapping(value = "/tms")
-    public List<TmsInput> getFromTmsDatabase() {
-        List<TmsInput> result = tmsService.getAllFromDb();
-        return result;
-    }
-
+/*
     @PostMapping(value = "/tms")
+    @ResponseBody
     public List<TmsInput> saveToTms(@RequestHeader (name = "Authorization") String token,
                                       @RequestBody TempoRequest tempoRequest) {
         List<TmsInput> result = tmsService.getTmsFormat(token, tempoRequest);
@@ -45,13 +38,32 @@ public class TempoController {
     }
 
     @GetMapping(value = "/excel")
+    @ResponseBody
     public void readFromExcel() {
         excelService.readFromExcel();
     }
 
 
     @GetMapping(value = "/team")
+    @ResponseBody
     public void readFromExcel(@RequestHeader(name = "Authorization") String token) {
         tmsService.getTeamDetails(token);
+    }
+
+    @RequestMapping("/")
+    public String welcome() {
+        return "index";
+    }*/
+
+    @PostMapping(value = "/sync")
+    @ResponseBody
+    public String syncButtonClicked( @RequestParam Map<String, String> body) {
+        return requestHandler.handleSyncRequest(body);
+    }
+
+    @GetMapping(value = "/view")
+    @ResponseBody
+    public String viewButtonClicked() {
+        return requestHandler.getAllFromDatabase();
     }
 }

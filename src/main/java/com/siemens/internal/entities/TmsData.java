@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ISETMSData")
 @IdClass(TmsId.class)
-public class TmsData {
+public class TmsData extends BaseEntity {
 
     @Id
     @Column(name = "RollNo")
@@ -39,7 +40,7 @@ public class TmsData {
 
     @Id
     @Column(name = "DateofEntry")
-    private String dateOfEntry;
+    private Date dateOfEntry;
 
     @Column(name = "Effort")
     private float effort;
@@ -55,4 +56,7 @@ public class TmsData {
 
     @Column(name = "PO_ID")
     private String purchaseOrderId;
+
+    @Column(name = "Active")
+    private int active;
 }
